@@ -1,24 +1,21 @@
-﻿namespace PokedexMaui;
+﻿using PokedexMaui.Services;
+
+namespace PokedexMaui;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    private readonly IPokeApiService _pokeApiService;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    public MainPage(IPokeApiService pokeApiService)
+    {
+        InitializeComponent();
+        _pokeApiService = pokeApiService;
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private async void OnCounterClickedAsync(object sender, EventArgs e)
+    {
+        string str = await _pokeApiService.GetPokemons();
+    }
 }
 
