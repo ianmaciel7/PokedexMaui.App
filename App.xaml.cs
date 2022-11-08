@@ -1,11 +1,13 @@
-﻿namespace PokedexMaui;
+﻿using PokedexMaui.Views;
+
+namespace PokedexMaui;
 
 public partial class App : Application
 {
-	public App(MainPage mainPage)
-	{
-		InitializeComponent();
+    public App(HomeView homeView)
+    {
+        InitializeComponent();
 
-		MainPage = mainPage;
-	}
+        MainPage = homeView;
+    }
 }

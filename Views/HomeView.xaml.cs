@@ -1,15 +1,15 @@
 ﻿using PokedexMaui.Models;
 using PokedexMaui.Services;
 
-namespace PokedexMaui;
+namespace PokedexMaui.Views;
 
-public partial class MainPage : ContentPage
+public partial class HomeView : ContentPage
 {
 
     public static Pagination<Pokemon> PaginationPokemons { get; private set; }
     private IPokeApiService _pokeApiService { get; }
 
-    public MainPage(IPokeApiService pokeApiService)
+    public HomeView(IPokeApiService pokeApiService)
     {
         _pokeApiService = pokeApiService;
         _ = InitializeComponentWithService();

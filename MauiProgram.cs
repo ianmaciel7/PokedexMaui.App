@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PokedexMaui.Services;
+using PokedexMaui.Views;
 
 namespace PokedexMaui;
 
@@ -17,7 +18,7 @@ public static class MauiProgram
             });
 
         builder.Services
-            .AddSingleton<MainPage>()
+            .AddSingleton<HomeView>()
             .AddTransient<IPokeApiService, PokeApiService>();
 
         return builder.Build();

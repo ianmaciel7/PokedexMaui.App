@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PokedexMaui"
-             x:Class="PokedexMaui.MainPage">
+             xmlns:views="clr-namespace:PokedexMaui.Views"
+             x:Class="PokedexMaui.Views.HomeView">
 
 
     <VerticalStackLayout
@@ -10,7 +11,7 @@
         Padding="30,0"
         VerticalOptions="Center">
 
-        <ListView ItemsSource="{Binding Source={x:Static local:MainPage.PaginationPokemons}, Path=Results}">
+        <ListView ItemsSource="{Binding Source={x:Static views:HomeView.PaginationPokemons}, Path=Results}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" Detail="{Binding Url}" />
