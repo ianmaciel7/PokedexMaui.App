@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PokedexMaui"
              xmlns:views="clr-namespace:PokedexMaui.Views"
+             xmlns:models="clr-namespace:PokedexMaui.Models"
+             xmlns:viewModels="clr-namespace:PokedexMaui.ViewModels"
+             x:DataType="viewModels:HomeViewModel"
              x:Class="PokedexMaui.Views.HomeView">
 
 
@@ -11,14 +14,13 @@
         Padding="30,0"
         VerticalOptions="Center">
 
-        <ListView ItemsSource="{Binding Source={x:Static views:HomeView.PaginationPokemons}, Path=Results}">
+        <ListView x:Name="list" ItemsSource="{Binding PaginationPokemons.Results}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Pokemon">
                     <TextCell Text="{Binding Name}" Detail="{Binding Url}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
 
     </VerticalStackLayout>
 
