@@ -5,24 +5,22 @@ namespace PokedexMaui;
 
 public partial class MainPage : ContentPage
 {
-    public static Pagination<Pokemon> MockPaginationPokemons { get; private set; }
 
-    static MainPage()
-    {
-        MockPaginationPokemons = new Pagination<Pokemon>()
-        {
-            Next = null,
-            Previus = null,
-            Results = new List<Pokemon>() {
-                    new Pokemon { Name = "test1", Url = "testurl1" },
-                    new Pokemon { Name = "test2", Url = "testurl2" },
-                }
-        };
-    }
+    public static Pagination<Pokemon> PaginationPokemons { get; private set; }
+    private IPokeApiService _pokeApiService { get; }
 
     public MainPage(IPokeApiService pokeApiService)
     {
-        InitializeComponent();     
+        _pokeApiService = pokeApiService;
+        _ = InitializeComponentWithService();
+    }
+
+    private async Task InitializeComponentWithService()
+    {
+        string str = await _pokeApiService.GetPokemons();
+        var pagination = new Pagination<Pokemon>(str);
+        PaginationPokemons = pagination;
+        InitializeComponent();
     }
 }
 

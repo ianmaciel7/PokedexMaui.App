@@ -10,7 +10,7 @@
         Padding="30,0"
         VerticalOptions="Center">
 
-        <ListView ItemsSource="{Binding Source={x:Static local:MainPage.MockPaginationPokemons}, Path=Results}">
+        <ListView ItemsSource="{Binding Source={x:Static local:MainPage.PaginationPokemons}, Path=Results}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" Detail="{Binding Url}" />
